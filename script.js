@@ -18,8 +18,8 @@ const correctCounter = document.querySelector(".counter");
 
 
 function timer () {
-    let seconds = 0;
-    let minutes = 1;
+    let seconds = 5;
+    let minutes = 0;
     let gameOver = false;
     const timer = setInterval(() => {
         if (seconds === 0) {
@@ -36,7 +36,7 @@ function timer () {
             gameOver = true;
         }
         if (gameOver) {
-            document.querySelector(".msg").innerHTML = `<p> Game Over! score: ${counter}</p><p>Refresh to Restart</p>`
+            document.querySelector(".msg").innerHTML = `<p> <span>Game Over!</span> score: <span>${counter}</span></p><p><span>Refresh</span> to <span>Restart</span></p>`
 
         }
 
