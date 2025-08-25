@@ -14,6 +14,41 @@ let currentShape = null;
 let previousShape = null;
 const correctCounter = document.querySelector(".counter");
 
+// timer
+
+
+function timer () {
+    let seconds = 0;
+    let minutes = 1;
+    let gameOver = false;
+    const timer = setInterval(() => {
+        if (seconds === 0) {
+            if (minutes === 0) {
+                clearInterval(timer);
+                return;
+            }
+            minutes--;
+            seconds = 59;
+        } else {
+            seconds--;
+        }
+        if (seconds === 0 && minutes === 0) {
+            gameOver = true;
+        }
+        if (gameOver) {
+            document.querySelector(".msg").innerHTML = `<p> Game Over! score: ${counter}</p><p>Refresh to Restart</p>`
+
+        }
+
+        let m = minutes.toString().padStart(2, "0");
+        let s = seconds.toString().padStart(2, "0"); // <-- FIXED
+
+        const timerElem = document.querySelector(".time");
+        timerElem.innerHTML = `${m}:${s}`;
+    }, 1000);
+}
+
+
 function getRandomShape() {
     const randomShape = Math.floor(Math.random() * shapes.length);
     return shapes[randomShape];
@@ -34,10 +69,16 @@ function getNextShape(previousShape) {
     return newShape;
 }
 
-
+    let gameStart = false;
 document.addEventListener("keydown", (event) => {
+
     if (event.code === "Space" || event.code === "Enter") {
         event.preventDefault();
+      
+        if (!gameStart) {
+            gameStart = true;
+            timer()
+        }
 
         handleValidation(event);
 
@@ -58,10 +99,10 @@ document.addEventListener("keydown", (event) => {
 });
 
 let counter = 0;
+let streak = 0;
+const streakElm = document.querySelector(".streak");
 function handleValidation(event) {
   
-  
-
     let isCorrect = null;
     validation.style.animation = "none";
     void validation.offsetWidth;
@@ -98,4 +139,5 @@ function handleValidation(event) {
     else if (!isCorrect) {
         validation.innerHTML = `<img src = "https://codehs.com/uploads/56bdcd72726d3a17f43fa63a68d25387">`
     }
+   
 }
