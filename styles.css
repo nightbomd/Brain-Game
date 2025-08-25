@@ -15,7 +15,14 @@ body {
   height: fit-content;
 }
 
-.counter {
+.points {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.counter, .streak {
   background-color: white;
   box-shadow: 0px 8px 32px black;
   -webkit-backdrop-filter: blur(20px);
@@ -27,13 +34,43 @@ body {
   border-radius: 0.5rem;
   width: 80px;
   height: 80px;
-  margin: 0 auto;
   width: 80px;
   height: 80px;
   font-size: 2rem;
   font-weight: 800;
   color: #e74c3c;
-  margin-bottom: 1rem;
+}
+
+.streak {
+  color: #f39c12;
+}
+
+.time {
+  color: #4276aa;
+}
+
+.time {
+  background-color: white;
+  box-shadow: 0px 8px 32px black;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  width: 80px;
+  height: 80px;
+  width: 200px;
+  height: 80px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.msg {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
 }
 
 .container {
@@ -205,5 +242,15 @@ body {
   100% {
     opacity: 0;
     transform: scale(0.2);
+  }
+}
+@keyframes gameOver {
+  from {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }/*# sourceMappingURL=styles.css.map */
